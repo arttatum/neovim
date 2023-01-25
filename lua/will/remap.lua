@@ -1,1 +1,1 @@
-vim.keymap.set("n", "<leader>qq", vim.cmd.Ex)
+vim.keymap.set("n", "<leader>q", vim.cmd.Ex)
