@@ -62,20 +62,21 @@ end
 local function matrix(message)
     if message == nil or message == "" then
 
-        return "cmatrix -u 10 -M 'Coffee?'"
+    --    return "MESSAGE=$(echo '' && figlet 'Coffee!') && cmatrix -u 10 -M $MESSAGE"
+        return "cmatrix -ba"
     end
 
     return "cmatrix -u 10 -M" .. message 
 end
 
-local term_height = 15
+local term_height = 20
 local config = {
     layout = {
         { type = "padding", val = term_height + 5 },
         {
             type = "terminal",
-            command = matrix(), --
-            width = 50,
+            command = matrix(),-- .. "| lolcat" , --
+            width = 80,
             height = term_height,
             opts = {
                 redraw = true,
