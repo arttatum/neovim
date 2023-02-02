@@ -69,7 +69,7 @@ local function matrix(message)
     return "cmatrix -u 10 -M" .. message 
 end
 
-local term_height = 20
+local term_height = 10
 local config = {
     layout = {
         { type = "padding", val = term_height + 5 },

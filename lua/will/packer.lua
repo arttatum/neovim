@@ -1,6 +1,14 @@
 -- This file can be loaded by calling `lua require('plugins')` from your init.vim
 
 -- Only required if you have packer configured as `opt`
+print("Hi packer")
+
+local fn = vim.fn
+local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+if fn.empty(fn.glob(install_path)) > 0 then
+  print("Installing packer")
+  local packer_bootstrap = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+end
 vim.cmd [[packadd packer.nvim]]
 
 return require('packer').startup(function(use)
@@ -69,7 +77,11 @@ return require('packer').startup(function(use)
         tag = 'nightly' -- optional, updated every week. (see issue #1193)
     }
 
+    use { 'eandrju/cellular-automaton.nvim' }
 
+    if packer_bootstrap then
+        require('packer').sync()
+      end
 end
 )
 
